@@ -1,0 +1,49 @@
+{% comment %}
+Project Meta Component
+Usage: {% include project-meta.html project=project %}
+{% endcomment %}
+
+{% assign project = include.project %}
+
+<div class="project-meta">
+  <div class="project-dates">
+    {% if project.start_date %}
+      <strong>Started:</strong> {{ project.start_date | date: "%b %d, %Y" }}
+    {% endif %}
+    {% if project.end_date %}
+      <br><strong>{{ project.status == "Completed" ? "Completed" : "Due" }}:</strong> {{ project.end_date | date: "%b %d, %Y" }}
+    {% endif %}
+    {% if project.last_updated %}
+      <br><strong>Updated:</strong> {{ project.last_updated | date: "%b %d, %Y" }}
+    {% endif %}
+  </div>
+  
+  {% if project.priority %}
+    <div class="project-priority">
+      {% include priority-badge.html priority=project.priority %}
+    </div>
+  {% endif %}
+</div>
+
+{% if project.links %}
+  <div class="project-links">
+    {% for link in project.links %}
+      <a href="{{ link.url }}" class="project-link" target="_blank" rel="noopener noreferrer">
+        {% if link.type == "github" %}
+          <span class="link-icon">🐙</span>
+        {% elsif link.type == "demo" %}
+          <span class="link-icon">🌐</span>
+        {% elsif link.type == "docs" %}
+          <span class="link-icon">📚</span>
+        {% elsif link.type == "figma" %}
+          <span class="link-icon">🎨</span>
+        {% elsif link.type == "notion" %}
+          <span class="link-icon">📝</span>
+        {% else %}
+          <span class="link-icon">🔗</span>
+        {% endif %}
+        {{ link.name }}
+      </a>
+    {% endfor %}
+  </div>
+{% endif %}

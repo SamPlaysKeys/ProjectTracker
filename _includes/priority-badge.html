@@ -1,0 +1,16 @@
+{% comment %}
+Priority Badge Component
+Usage: {% include priority-badge.html priority="High" %}
+{% endcomment %}
+
+{% assign priority = include.priority | default: "Medium" %}
+{% assign priority_lower = priority | downcase %}
+
+{% comment %} Get priority configuration from site config {% endcomment %}
+{% assign priority_config = site.priority_levels | where: "name", priority | first %}
+{% assign priority_icon = priority_config.icon | default: "🟡" %}
+
+<span class="priority-badge priority-{{ priority_lower }}">
+  <span class="priority-icon">{{ priority_icon }}</span>
+  <span class="priority-text">{{ priority }}</span>
+</span>

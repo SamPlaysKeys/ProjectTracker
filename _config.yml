@@ -1,0 +1,100 @@
+# Site settings
+title: "Project Tracker"
+email: your-email@example.com
+description: >-
+  A comprehensive project tracking system to monitor progress across
+  personal projects, work initiatives, and learning goals.
+baseurl: "/ProjectTracker" # Update this to match your repository name
+url: "https://your-username.github.io" # Update with your GitHub username
+
+# GitHub Pages configuration
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+sass:
+  style: compressed
+
+# Custom variables
+accent_color: "#CC8563" # Dusty orange accent color
+light_accent: "#E6B896" # Lighter dusty orange
+text_primary: "#333333"
+text_secondary: "#666666"
+background_light: "#FAFAFA"
+background_white: "#FFFFFF"
+
+# Theme customization
+minima:
+  skin: light
+
+# Collections
+collections:
+  projects:
+    output: false
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - .DS_Store
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+      author: "Your Name"
+      show_excerpts: false
+
+# Project categories
+project_categories:
+  - "Development"
+  - "Learning"
+  - "Personal"
+  - "Work"
+  - "Research"
+  - "Creative"
+
+# Project statuses
+project_statuses:
+  - name: "Planning"
+    color: "#6C7B7F"
+    icon: "📋"
+  - name: "In Progress"
+    color: "#CC8563"
+    icon: "🚀"
+  - name: "On Hold"
+    color: "#F39C12"
+    icon: "⏸️"
+  - name: "Completed"
+    color: "#27AE60"
+    icon: "✅"
+  - name: "Cancelled"
+    color: "#E74C3C"
+    icon: "❌"
+
+# Priority levels
+priority_levels:
+  - name: "High"
+    color: "#E74C3C"
+    icon: "🔴"
+  - name: "Medium"
+    color: "#F39C12"
+    icon: "🟡"
+  - name: "Low"
+    color: "#3498DB"
+    icon: "🔵"

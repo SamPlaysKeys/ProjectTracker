@@ -1,0 +1,16 @@
+{% comment %}
+Status Badge Component
+Usage: {% include status-badge.html status="In Progress" %}
+{% endcomment %}
+
+{% assign status = include.status | default: "Planning" %}
+{% assign status_lower = status | downcase | replace: " ", "-" %}
+
+{% comment %} Get status configuration from site config {% endcomment %}
+{% assign status_config = site.project_statuses | where: "name", status | first %}
+{% assign status_icon = status_config.icon | default: "📋" %}
+
+<span class="status-badge status-{{ status_lower }}">
+  <span class="status-icon">{{ status_icon }}</span>
+  <span class="status-text">{{ status }}</span>
+</span>

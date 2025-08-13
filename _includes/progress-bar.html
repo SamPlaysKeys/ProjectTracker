@@ -1,0 +1,20 @@
+{% comment %}
+Progress Bar Component
+Usage: {% include progress-bar.html percentage=75 label="Progress" show_percentage=true %}
+{% endcomment %}
+
+{% assign progress = include.percentage | default: 0 %}
+{% assign label = include.label | default: "Progress" %}
+{% assign show_percentage = include.show_percentage | default: true %}
+
+<div class="progress-container">
+  <div class="progress-label">
+    <span>{{ label }}</span>
+    {% if show_percentage %}
+      <span class="progress-percentage">{{ progress }}%</span>
+    {% endif %}
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" style="width: {{ progress }}%"></div>
+  </div>
+</div>
