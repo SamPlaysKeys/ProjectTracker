@@ -1,253 +1,57 @@
----
-layout: default
-title: "Project Tracker | Sam's Project Dashboard"
-description: "A comprehensive project tracking system to monitor progress across personal projects, work initiatives, and learning goals."
----
+# 🚀 Project Tracker
 
-<div class="hero-section">
-  <h1 class="hero-title">🚀 Project Tracker</h1>
-  <p class="hero-subtitle">
-    A comprehensive dashboard to monitor progress across personal projects, work initiatives, and learning goals.
-    Stay organized, track milestones, and celebrate achievements.
-  </p>
-</div>
+This repository tracks my current projects and their progress. Simple, clean, and easy to maintain.
 
-<!-- Quick Stats Dashboard -->
-<div class="stats-dashboard">
-  {% assign total_projects = site.data.projects | size %}
-  {% assign active_projects = site.data.projects | where: "status", "In Progress" | size %}
-  {% assign completed_projects = site.data.projects | where: "status", "Completed" | size %}
-  {% assign planning_projects = site.data.projects | where: "status", "Planning" | size %}
-  {% assign completion_rate = completed_projects | times: 100.0 | divided_by: total_projects | round: 1 %}
-  
-  <div class="stat-card">
-    <div class="stat-number">{{ total_projects }}</div>
-    <div class="stat-label">Total Projects</div>
-  </div>
-  
-  <div class="stat-card">
-    <div class="stat-number">{{ active_projects }}</div>
-    <div class="stat-label">In Progress</div>
-  </div>
-  
-  <div class="stat-card">
-    <div class="stat-number">{{ completed_projects }}</div>
-    <div class="stat-label">Completed</div>
-  </div>
-  
-  <div class="stat-card">
-    <div class="stat-number">{{ completion_rate }}%</div>
-    <div class="stat-label">Success Rate</div>
-  </div>
-</div>
+## 📊 Current Projects
 
-<!-- Filter Controls -->
-<div class="filter-controls">
-  <div class="filter-group">
-    <label class="filter-label">Status</label>
-    <select id="status-filter" class="filter-select">
-      <option value="all">All Statuses</option>
-      <option value="planning">📋 Planning</option>
-      <option value="in-progress">🚀 In Progress</option>
-      <option value="on-hold">⏸️ On Hold</option>
-      <option value="completed">✅ Completed</option>
-      <option value="cancelled">❌ Cancelled</option>
-    </select>
-  </div>
-  
-  <div class="filter-group">
-    <label class="filter-label">Category</label>
-    <select id="category-filter" class="filter-select">
-      <option value="all">All Categories</option>
-      {% for category in site.project_categories %}
-      <option value="{{ category | downcase }}">{{ category }}</option>
-      {% endfor %}
-    </select>
-  </div>
-  
-  <div class="filter-group">
-    <label class="filter-label">Priority</label>
-    <select id="priority-filter" class="filter-select">
-      <option value="all">All Priorities</option>
-      <option value="high">🔴 High</option>
-      <option value="medium">🟡 Medium</option>
-      <option value="low">🔵 Low</option>
-    </select>
-  </div>
-</div>
+| 🎯 Project Name | 📝 Description | 📈 Status | 📅 Last Updated | 🔗 Links |
+|-----------------|----------------|-----------|-----------------|----------|
+| **CardTracker Mobile App** | Mobile app for tracking collectible cards with barcode scanning | 🚀 In Progress | 2024-08-10 | [GitHub](https://github.com/user/cardtracker) |
+| **Learn Rust Programming** | Comprehensive learning path to master Rust programming | 🚀 In Progress | 2024-08-12 | [GitHub](https://github.com/user/rust-learning) |
+| **Home Automation System** | Smart home setup using Home Assistant and custom sensors | 🚀 In Progress | 2024-08-05 | [Config](https://github.com/user/homeassistant-config) |
+| **Personal Finance Dashboard** | Web app for tracking expenses and investments | 📋 Planning | 2024-08-13 | [Figma](https://figma.com/finance-dashboard) |
+| **Machine Learning Fundamentals** | Structured ML learning program with Python and TensorFlow | 📋 Planning | 2024-08-13 | [Notes](https://notion.so/ml-learning-plan) |
+| **Portfolio Website Redesign** | Complete overhaul with modern design and performance | ✅ Completed | 2024-06-15 | [Live Site](https://example.com) • [GitHub](https://github.com/user/portfolio) |
+| **Photography Skills Workshop** | 6-month photography course covering composition and editing | ✅ Completed | 2024-05-01 | — |
+| **Podcast Production Setup** | Setting up podcast recording and editing workflow | ⏸️ On Hold | 2024-07-01 | [Research](https://notion.so/podcast-equipment) |
+| **API Documentation Overhaul** | Complete rewrite of company API documentation | 🚀 In Progress | 2024-08-12 | — |
+| **Team Onboarding Process** | Comprehensive onboarding materials for new team members | ✅ Completed | 2024-07-31 | — |
 
-## 🚀 Active Projects
+## 📈 Status Legend
 
-{% assign active_projects = site.data.projects | where: "status", "In Progress" %}
-{% if active_projects.size > 0 %}
+- 🚀 **In Progress** - Currently working on this
+- 📋 **Planning** - In research/planning phase  
+- ⏸️ **On Hold** - Temporarily paused
+- ✅ **Completed** - Successfully finished
+- ❌ **Cancelled** - Project discontinued
 
-<div class="section-header">
-  <span class="section-icon">🚀</span>
-  <h2 class="section-title">Currently In Progress</h2>
-  <span class="section-count">{{ active_projects.size }}</span>
-</div>
+## 🎯 Quick Stats
 
-<div class="projects-grid">
-  {% for project in active_projects %}
-    {% include project-card.html project=project %}
-  {% endfor %}
-</div>
+- **Total Projects**: 10
+- **Active Projects**: 4
+- **Completed Projects**: 3
+- **Success Rate**: 30%
 
-{% else %}
-<div class="empty-state">
-  <div class="empty-state-icon">🎯</div>
-  <div class="empty-state-text">No active projects at the moment</div>
-  <div class="empty-state-subtext">Time to start something new!</div>
-</div>
-{% endif %}
+## 📝 About
 
-## 📋 Planning Phase
+This tracker helps me stay organized and monitor progress across personal projects, work initiatives, and learning goals. The simple table format makes it easy to see everything at a glance and update as needed.
 
-{% assign planning_projects = site.data.projects | where: "status", "Planning" %}
-{% if planning_projects.size > 0 %}
+## 🔄 How to Update
 
-<div class="section-header">
-  <span class="section-icon">📋</span>
-  <h2 class="section-title">In Planning</h2>
-  <span class="section-count">{{ planning_projects.size }}</span>
-</div>
+To add or update a project:
+1. Edit this README.md file
+2. Add a new row to the table or update an existing one
+3. Commit and push changes
+4. GitHub Pages will automatically update the site
 
-<div class="projects-grid">
-  {% for project in planning_projects %}
-    {% include project-card.html project=project %}
-  {% endfor %}
-</div>
+## 📞 Contact
 
-{% else %}
-<div class="empty-state">
-  <div class="empty-state-icon">📝</div>
-  <div class="empty-state-text">No projects in planning phase</div>
-  <div class="empty-state-subtext">All projects are either active or completed</div>
-</div>
-{% endif %}
+Feel free to reach out if you have questions or suggestions!
 
-## ✅ Completed Projects
-
-{% assign completed_projects = site.data.projects | where: "status", "Completed" %}
-{% if completed_projects.size > 0 %}
-
-<div class="section-header collapsible-header" onclick="toggleSection('completed')">
-  <span class="section-icon">✅</span>
-  <h2 class="section-title">Successfully Completed</h2>
-  <span class="collapsible-toggle">▼</span>
-  <span class="section-count">{{ completed_projects.size }}</span>
-</div>
-
-<div class="collapsible-content" id="completed">
-  <div class="projects-grid">
-    {% for project in completed_projects %}
-      {% include project-card.html project=project %}
-    {% endfor %}
-  </div>
-</div>
-
-{% else %}
-<div class="empty-state">
-  <div class="empty-state-icon">🏆</div>
-  <div class="empty-state-text">No completed projects yet</div>
-  <div class="empty-state-subtext">Keep working towards your first completion!</div>
-</div>
-{% endif %}
-
-## ⏸️ On Hold & Paused
-
-{% assign on_hold_projects = site.data.projects | where: "status", "On Hold" %}
-{% if on_hold_projects.size > 0 %}
-
-<div class="section-header collapsible-header" onclick="toggleSection('on-hold')">
-  <span class="section-icon">⏸️</span>
-  <h2 class="section-title">Temporarily Paused</h2>
-  <span class="collapsible-toggle">▼</span>
-  <span class="section-count">{{ on_hold_projects.size }}</span>
-</div>
-
-<div class="collapsible-content" id="on-hold">
-  <div class="projects-grid">
-    {% for project in on_hold_projects %}
-      {% include project-card.html project=project %}
-    {% endfor %}
-  </div>
-</div>
-
-{% else %}
-<div class="empty-state">
-  <div class="empty-state-icon">⚖️</div>
-  <div class="empty-state-text">No paused projects</div>
-  <div class="empty-state-subtext">Great focus! Everything is either active or completed</div>
-</div>
-{% endif %}
-
-## 📊 Project Categories Overview
-
-<div class="stats-dashboard">
-  {% for category in site.project_categories %}
-    {% assign category_projects = site.data.projects | where: "category", category %}
-    {% if category_projects.size > 0 %}
-      <div class="stat-card">
-        <div class="stat-number">{{ category_projects.size }}</div>
-        <div class="stat-label">{{ category }}</div>
-      </div>
-    {% endif %}
-  {% endfor %}
-</div>
+- 📧 Email: [your-email@example.com](mailto:your-email@example.com)
+- 🌐 Website: [your-website.com](https://your-website.com)
+- 💼 LinkedIn: [your-profile](https://linkedin.com/in/your-profile)
 
 ---
 
-## 📝 How to Add New Projects
-
-To add a new project to this tracker:
-
-1. **Edit the data file**: Open `_data/projects.yml`
-2. **Add your project** using this template:
-
-```yaml
-- name: "Your Project Name"
-  description: "Brief description of what this project entails"
-  status: "Planning" # Planning | In Progress | On Hold | Completed | Cancelled
-  category: "Development" # Development | Learning | Personal | Work | Research | Creative
-  priority: "Medium" # High | Medium | Low (optional)
-  progress: 0 # 0-100 percentage (optional)
-  start_date: "2024-01-01" # YYYY-MM-DD format (optional)
-  end_date: "2024-12-31" # YYYY-MM-DD format (optional)
-  last_updated: "2024-01-01" # YYYY-MM-DD format (optional)
-  icon: "🚀" # Any emoji or icon (optional)
-  tags: ["tag1", "tag2", "tag3"] # Relevant tags (optional)
-  links: # Related links (optional)
-    - name: "GitHub Repository"
-      url: "https://github.com/user/repo"
-      type: "github" # github | demo | docs | figma | notion | other
-```
-
-3. **Commit and push** your changes to update the live site
-
-### Available Status Options
-- 📋 **Planning**: Project is in the planning/research phase
-- 🚀 **In Progress**: Actively working on the project
-- ⏸️ **On Hold**: Temporarily paused or deprioritized
-- ✅ **Completed**: Successfully finished
-- ❌ **Cancelled**: Project discontinued
-
-### Link Types
-The system supports these link types with automatic icons:
-- `github` 🐙 - GitHub repositories
-- `demo` 🌐 - Live demos or websites
-- `docs` 📚 - Documentation
-- `figma` 🎨 - Design files
-- `notion` 📝 - Notion pages
-- `other` 🔗 - Generic links
-
----
-
-<div style="text-align: center; margin: 40px 0; padding: 20px; background: var(--background-white); border-radius: 8px; box-shadow: 0 2px 4px var(--shadow-light);">
-  <p style="margin: 0; color: var(--text-secondary); font-style: italic;">
-    🌟 Last updated: {{ site.time | date: "%B %d, %Y at %I:%M %p" }} 🌟
-  </p>
-  <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: var(--text-secondary);">
-    Built with Jekyll • Hosted on GitHub Pages • Styled with ❤️
-  </p>
-</div>
+*Last updated: August 13, 2024*
